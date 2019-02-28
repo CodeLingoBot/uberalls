@@ -36,7 +36,7 @@ func NewHealthHandler(db *gorm.DB) HealthHandler {
 	return HealthHandler{db: db}
 }
 
-// ServeHTP handles the health endpoint
+// ServeHTTP handles the health endpoint
 func (h HealthHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/plain")
 	if err := h.db.DB().Ping(); err != nil {
